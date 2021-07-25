@@ -96,7 +96,7 @@ export class SelectionSortComponent implements OnInit {
       this.currentSel = -2;
       this.min_idx = -2;
       this.selectionSort(i + 1);
-    }, 1000);
+    }, 500);
   }
 
   getColor(i: number) {

@@ -95,7 +95,7 @@ export class BubbleSortComponent implements OnInit {
             this.currentSel = -2;
             this.bubbleSort(i + 1);
           }
-        }, 500);
+        }, 250);
       } else {
         this.swapping = false;
         this.numberArray = this.numberArray;
@@ -109,7 +109,7 @@ export class BubbleSortComponent implements OnInit {
           }
         });
       }
-    }, 1000);
+    }, 500);
   }
 
   getColor(i: number) {

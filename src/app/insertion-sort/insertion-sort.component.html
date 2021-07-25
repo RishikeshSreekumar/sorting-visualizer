@@ -1,10 +1,70 @@
-<div style="padding: 20px;">
-    <mat-slider value=10 thumbLabel tickInterval="1" step="1" min="5" max="500" (input)="onInputChange($event)"></mat-slider>
-    <p> {{value}} </p>
-    <button (click)="selectionSort()">Sort</button>
-    <div>
-        <div *ngFor="let item of numberArray" style="margin: 1px; display: inline-block;">
-            <app-vertical-bar [height]=item [highlight]="isSorted(item)" algo="insertion"></app-vertical-bar>
-        </div>
+<div style="padding: 20px">
+  <div style="display: flex; justify-content: center; align-items: center">
+    <span style="margin-inline: 5px"> {{ value }} </span>
+    <mat-slider
+      value="15"
+      thumbLabel
+      tickInterval="1"
+      step="1"
+      min="5"
+      max="25"
+      (input)="onInputChange($event)"
+      style="margin-right: 20px"
+    ></mat-slider>
+    <button
+      mat-raised-button
+      color="accent"
+      style="margin: 5px"
+      (click)="sort()"
+    >
+      Sort
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      style="margin: 5px"
+      (click)="updateNumberArray(value)"
+    >
+      Shuffle
+    </button>
+  </div>
+  <div style="display: flex; justify-content: center">
+    <div style="width: fit-content">
+      <div
+        *ngFor="let item of numberArray"
+        style="margin: 1px; display: inline-block; border: 1px black solid"
+        class="bar"
+        id="bar-id-{{ item }}"
+      >
+        <app-vertical-bar
+          [height]="item"
+          [highlight]="getColor(item)"
+          algo="bubble"
+        ></app-vertical-bar>
+      </div>
     </div>
+  </div>
+  <div style="display: flex; justify-content: center">
+    <div
+      style="width: fit-content; padding: 5px"
+      *ngIf="!swapping && sortedUntil != 0"
+    >
+      <p *ngIf="currentSel != -2">
+        Index of current and next item = {{ currentSel }} and
+        {{ currentSel + 1 }}
+      </p>
+      <p>Sorted Until {{ sortedUntil }} items from left</p>
+    </div>
+    <div
+      style="width: fit-content; padding: 5px"
+      *ngIf="!swapping && sortedUntil == numberArray.length - 1"
+    >
+      <p>Sorting completed!</p>
+    </div>
+    <div style="width: fit-content; padding: 5px" *ngIf="swapping">
+      <p>
+        Swapping between index {{ currentSel }} and index {{ currentSel - 1 }}
+      </p>
+    </div>
+  </div>
 </div>
