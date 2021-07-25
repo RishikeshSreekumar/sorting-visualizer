@@ -1,0 +1,10 @@
+<div style="padding: 20px;">
+    <mat-slider value=10 thumbLabel tickInterval="1" step="1" min="5" max="500" (input)="onInputChange($event)"></mat-slider>
+    <p> {{value}} </p>
+    <button (click)="selectionSort()">Sort</button>
+    <div>
+        <div *ngFor="let item of numberArray" style="margin: 1px; display: inline-block;">
+            <app-vertical-bar [height]=item [highlight]="isSorted(item)" algo="insertion"></app-vertical-bar>
+        </div>
+    </div>
+</div>

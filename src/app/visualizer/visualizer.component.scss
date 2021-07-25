@@ -1,0 +1,11 @@
+.header {
+    width: calc(100% - 10px);
+    height: fit-content;
+    padding: 5px;
+    background-color: hsl(150, 22%, 59%);
+    display: inline-block;
+}
+
+button {
+    margin: 15px;
+}
